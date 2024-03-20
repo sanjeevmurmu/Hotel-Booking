@@ -4,6 +4,7 @@ import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
   const {data,loading,error}=useFetch("/hotels?featured=true&limit=4")
+  console.log(error)
   return (
     <div className="fp">
       {loading? <h2 className="featprop-skeleton">

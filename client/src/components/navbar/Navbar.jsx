@@ -13,8 +13,8 @@ const Navbar = () => {
   return (
     <div className="navbar">
         <div className="navContainer">
-           <Link to="/" style={{color:"inherit",textDecoration:"none"}}>
-            <span className="log">Booking Website</span>
+           <Link to="/" style={{color:"inherit",textDecoration:"none",fontSize:'24px'}}>
+            <span className="log">LodgeLuxe</span>
             </Link>
             {user ? (<button className="navButton">{`${user.details.username}`}</button>):(<div className="navItems">
                 <button className="navButton"onClick={handleClick}>Register</button>
