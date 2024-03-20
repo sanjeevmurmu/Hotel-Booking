@@ -22,7 +22,7 @@ const List = () => {
   const [min, setMin] = useState(undefined)
   const [max, setMax] = useState(undefined)
 
-  const { data, loading, error, reFetch } = useFetch(`https://hotel-booking-0dol.onrender.com/hotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${max || 999}`)
+  const { data, loading, error, reFetch } = useFetch(`https://hotel-booking-0dol.onrender.com/api/hotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${max || 999}`)
   console.log(location.state)
   const handleClick = () => {
     reFetch()

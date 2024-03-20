@@ -10,7 +10,7 @@ const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`https://hotel-booking-0dol.onrender.com/${path}`);
+  const { data, loading, error } = useFetch(`https://hotel-booking-0dol.onrender.com/api/${path}`);
 
   console.log(path)
   useEffect(() => {
