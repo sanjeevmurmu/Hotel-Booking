@@ -5,12 +5,16 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
   const { data, loading, error } = useFetch(`/${path}`);
+
+  const {user}=useContext(AuthContext)
 
   console.log(path)
   useEffect(() => {
@@ -19,7 +23,9 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://hotel-booking-0dol.onrender.com/api/${path}/${id}`,{withCredentials:true}).then((res)=>console.log(res)).catch((err)=>console.log(err));
+      await axios.delete(`https://hotel-booking-0dol.onrender.com/api/${path}/${id}`,{withCredentials:true,headers: {
+        'cookies': `access_token ${user.access_token}`
+    }}).then((res)=>console.log(res)).catch((err)=>console.log(err));
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
