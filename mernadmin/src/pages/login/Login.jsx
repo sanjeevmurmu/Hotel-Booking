@@ -26,7 +26,7 @@ const Login = () => {
       const res = await axios.post("https://hotel-booking-0dol.onrender.com/api/auth/login", credentials);
       console.log(res.data)
       if (res.data.isAdmin) {
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data});
         navigate("/");
       } else {
         dispatch({
@@ -35,7 +35,7 @@ const Login = () => {
         });
       }
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAILURE", payload: err });
     }
   };
 

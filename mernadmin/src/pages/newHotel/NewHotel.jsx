@@ -2,9 +2,10 @@ import "./newHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 const NewHotel = () => {
@@ -14,6 +15,8 @@ const NewHotel = () => {
 
   const { data, loading, error } = useFetch("https://hotel-booking-0dol.onrender.com/api/rooms");
 
+  const { user } = useContext(AuthContext);
+  console.log(user.isAdmin)
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
@@ -47,12 +50,13 @@ const NewHotel = () => {
       );
 
       const newhotel = {
+        user,
         ...info,
         rooms,
         photos: list,
       };
 
-      await axios.post("https://hotel-booking-0dol.onrender.com/api/hotels", newhotel);
+      await axios.post("https://hotel-booking-0dol.onrender.com/api/hotels", newhotel,{withCredentials:true});
     } catch (err) {console.log(err)}
   };
   return (

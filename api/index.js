@@ -30,7 +30,13 @@ mongoose.connection.on("connected",()=>{
     console.log("mongoDB connected!")
 })
 
-app.use(cors())
+var corsOptions = {
+    origin: 'https://hotel-booking-0dol.onrender.com',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
+
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json())
 
