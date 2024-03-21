@@ -31,8 +31,8 @@ mongoose.connection.on("connected",()=>{
 })
 
 var corsOptions = {
-    origin: 'https://hotel-booking-0dol.onrender.com',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin:true,
+    credentials:true
   }
 
 
