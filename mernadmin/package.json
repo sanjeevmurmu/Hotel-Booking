@@ -47,5 +47,6 @@
   },
   "//": [
     {"proxy":"http://localhost:8800/api"}
-     ]
+     ],
+  "proxy": "https://hotel-booking-0dol.onrender.com/api"
 }

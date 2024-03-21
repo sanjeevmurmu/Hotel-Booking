@@ -31,7 +31,7 @@ mongoose.connection.on("connected",()=>{
 })
 
 var corsOptions = {
-    origin:true,
+    origin:['http://localhost:3000'],
     credentials:true
   }
 
