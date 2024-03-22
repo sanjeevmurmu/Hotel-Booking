@@ -47,9 +47,8 @@ const redisClient = redis.createClient({
     }
   })();
 
-const redisStore = new RedisStore(expressSession);
 
-  const sessionStore = redisStore({
+  const sessionStore = new RedisStore({
     client: redisClient,
   });
 
@@ -60,7 +59,7 @@ const redisStore = new RedisStore(expressSession);
 
 
 const sessionOptions = {
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.JWT,
     resave: false,
     saveUninitialized: true,
     store: sessionStore, // Use RedisStore for session storage
