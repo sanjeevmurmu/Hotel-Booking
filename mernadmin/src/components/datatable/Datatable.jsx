@@ -23,9 +23,7 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://hotel-booking-0dol.onrender.com/api/${path}/${id}`,{withCredentials:true,headers: {
-        'cookies': `access_token ${user.access_token}`
-    }}).then((res)=>console.log(res)).catch((err)=>console.log(err));
+      await axios.delete(`https://hotel-booking-0dol.onrender.com/api/${path}/${id}`,{withCredentials:true}).then((res)=>console.log(res)).catch((err)=>console.log(err));
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };

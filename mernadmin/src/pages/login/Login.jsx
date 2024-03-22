@@ -26,6 +26,8 @@ const Login = () => {
       const res = await axios.post("https://hotel-booking-0dol.onrender.com/api/auth/login", credentials);
       console.log(res)
       if (res.data.isAdmin) {
+      
+        document.cookie=`access_token=${res.data.access_token}`
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data});
         navigate("/");
       } else {
