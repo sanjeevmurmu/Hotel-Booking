@@ -19,6 +19,7 @@ const Datatable = ({columns}) => {
   console.log(path)
   useEffect(() => {
     setList(data);
+    // console.log(data[0]._id)
   }, [data]);
 
   const handleDelete = async (id) => {
@@ -65,7 +66,8 @@ const Datatable = ({columns}) => {
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
-        getRowId={(row) => row._id}
+        getRowId={(row) => {console.log(row._id)
+          return row._id}}
       />
     </div>
   );
