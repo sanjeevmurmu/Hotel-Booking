@@ -47,9 +47,9 @@ const redisClient = redis.createClient({
     }
   })();
 
-const RedisStore = RedisStore(expressSession);
+const redisStore = RedisStore(expressSession);
 
-  const sessionStore = new RedisStore({
+  const sessionStore = new redisStore({
     client: redisClient,
   });
 
