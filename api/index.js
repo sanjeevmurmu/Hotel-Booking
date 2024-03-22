@@ -31,7 +31,7 @@ mongoose.connection.on("connected",()=>{
 })
 
 var corsOptions = {
-    origin:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeAdmin-rose.vercel.app/'],
+    origin:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeadmin-rose.vercel.app/'],
     credentials:true
   }
 

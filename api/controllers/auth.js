@@ -29,7 +29,7 @@ export const login = async (req, res, next) => {
         const token=jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT)
 
         const { password, isAdmin, ...otherDetails } = user._doc
-        res.cookie("access_token",token,{domain:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeAdmin-rose.vercel.app'],httpOnly:true,sameSite:'None',secure:true}).status(200).json({details: {...otherDetails},isAdmin,"access_token":token })
+        res.cookie("access_token",token,{domain:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeadmin-rose.vercel.app'],httpOnly:true,sameSite:'None',secure:true}).status(200).json({details: {...otherDetails},isAdmin,"access_token":token })
        
     }
     catch (err) {
