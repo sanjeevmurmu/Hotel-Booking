@@ -20,6 +20,8 @@ const connect=async()=>{
     try{
         await mongoose.connect(process.env.MONGO)
         console.log("Connected to MongoDB")
+        await redisClient.connect();
+        console.log('Connected to Redis');
     }catch(error){
         throw error
     }
@@ -37,15 +39,6 @@ const redisClient = redis.createClient({
     url: process.env.REDIS_URL, // Replace with your Redis connection URL
   });
   
-  (async () => {
-    try {
-      await redisClient.connect();
-      console.log('Connected to Redis');
-    } catch (error) {
-      console.error('Error connecting to Redis:', error);
-      process.exit(1); // Exit on connection failure
-    }
-  })();
 
 
   const sessionStore = new RedisStore({
