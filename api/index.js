@@ -7,9 +7,6 @@ import hotelsRoute from './routes/hotels.js'
 import roomsRoute from './routes/rooms.js'
 import cookieParser from "cookie-parser"
 import cors from "cors"
-import redis from 'redis'
-import RedisStore from 'connect-redis';
-import expressSession from 'express-session';
 
 
 
@@ -20,8 +17,6 @@ const connect=async()=>{
     try{
         await mongoose.connect(process.env.MONGO)
         console.log("Connected to MongoDB")
-        await redisClient.connect();
-        console.log('Connected to Redis');
     }catch(error){
         throw error
     }
@@ -35,34 +30,15 @@ mongoose.connection.on("connected",()=>{
     console.log("mongoDB connected!")
 })
 
-const redisClient = redis.createClient({
-    url: process.env.REDIS_URL, // Replace with your Redis connection URL
-  });
-  
 
 
-  const sessionStore = new RedisStore({
-    client: redisClient,
-  });
 
   var corsOptions = {
     origin:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeadmin-rose.vercel.app'],
     credentials:true
   }
 
-
-const sessionOptions = {
-    secret: process.env.JWT,
-    resave: false,
-    saveUninitialized: true,
-    store: sessionStore, // Use RedisStore for session storage
-    cookie: {
-      secure: true, // Enforce secure cookies for production
-      sameSite: 'none'
-    },
-  };
   
-app.use(expressSession(sessionOptions));  
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json())
