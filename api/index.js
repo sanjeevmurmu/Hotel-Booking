@@ -31,10 +31,8 @@ mongoose.connection.on("connected",()=>{
 })
 
 
-
-
-  var corsOptions = {
-    origin:['http://localhost:3000','https://lodgeluxe-rose.vercel.app','https://lodgeluxeadmin-rose.vercel.app'],
+var corsOptions = {
+    origin:['https://lodgeluxe.onrender.com','https://lodgeluxeadmin.onrender.com'],
     credentials:true
   }
 
@@ -61,7 +59,7 @@ app.use((err,req,res,next)=>{
     })
 })
 
-app.listen(8800,()=>{
+app.listen(process.env.PORT||8800,()=>{
     connect()
     console.log("Connected to backend!")
 })

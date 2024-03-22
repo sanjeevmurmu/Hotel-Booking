@@ -13,7 +13,7 @@ const NewHotel = () => {
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
 
-  const { data, loading, error } = useFetch("https://hotel-booking-0dol.onrender.com/api/rooms");
+  const { data, loading, error } = useFetch("https://lodgeluxeapi.onrender.com/api/rooms");
 
   const { user } = useContext(AuthContext);
   console.log(user.isAdmin)
@@ -56,7 +56,7 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("https://hotel-booking-0dol.onrender.com/api/hotels", newhotel,{withCredentials:true});
+      await axios.post("https://lodgeluxeapi.onrender.com/api/hotels", newhotel,{withCredentials:true});
     } catch (err) {console.log(err)}
   };
   return (

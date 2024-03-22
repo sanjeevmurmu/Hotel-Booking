@@ -7,7 +7,7 @@ import { useState } from 'react'
 import {SearchContext} from '../../context/SearchContext'
 import axios from 'axios'
 const Reserve = ({setOpen,hotelId}) => {
-    const {data,loading,error}=  useFetch(`https://hotel-booking-0dol.onrender.com/api/hotels/room/${hotelId}`)
+    const {data,loading,error}=  useFetch(`https://lodgeluxeapi.onrender.com/api/hotels/room/${hotelId}`)
     // console.log(data)
     const [selectedRooms, setSelectedRooms] = useState([])
   

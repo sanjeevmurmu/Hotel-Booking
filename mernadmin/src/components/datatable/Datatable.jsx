@@ -12,7 +12,7 @@ const Datatable = ({columns}) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`https://hotel-booking-0dol.onrender.com/api/${path}`);
+  const { data, loading, error } = useFetch(`https://lodgeluxeapi.onrender.com/api/${path}`);
 
   const {user}=useContext(AuthContext)
 
@@ -24,7 +24,7 @@ const Datatable = ({columns}) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://hotel-booking-0dol.onrender.com/api/${path}/${id}`,{withCredentials:true}).then((res)=>console.log(res)).catch((err)=>console.log(err));
+      await axios.delete(`https://lodgeluxeapi.onrender.com/api/${path}/${id}`,{withCredentials:true}).then((res)=>console.log(res)).catch((err)=>console.log(err));
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
