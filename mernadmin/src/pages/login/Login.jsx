@@ -27,7 +27,7 @@ const Login = () => {
       console.log(res)
       if (res.data.isAdmin) {
       
-        document.cookie=`access_token=${res.data.access_token}`
+        // document.cookie=`access_token=${res.data.access_token}`
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data});
         navigate("/");
       } else {
