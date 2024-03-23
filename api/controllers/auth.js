@@ -28,9 +28,7 @@ export const login = async (req, res, next) => {
 
         const token=jwt.sign({id:user._id,isAdmin:user.isAdmin},process.env.JWT)
         const { password, isAdmin, ...otherDetails } = user._doc
-        res.cookie("access_token",token,{domain:'https://lodgeluxe.onrender.com',sameSite:'None',secure:true}).status(200).json({details: {...otherDetails},isAdmin,"access_token":token })
-        res.cookie("access_token",token,{domain:'https://lodgeluxeadmin.onrender.com',sameSite:'None',secure:true}).status(200).json({details: {...otherDetails},isAdmin,"access_token":token })
-       
+        res.cookie("access_token",token,{httpOnly:true,sameSite:'None',secure:true}).status(200).json({details: {...otherDetails},isAdmin,"access_token":token })       
     }
     catch (err) {
         next(err)
