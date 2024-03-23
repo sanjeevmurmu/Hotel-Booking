@@ -33,7 +33,8 @@ mongoose.connection.on("connected",()=>{
 
 var corsOptions = {
     origin:['https://lodgeluxe.onrender.com','https://lodgeluxeadmin.onrender.com'],
-    credentials:true
+    credentials:true,
+    exposedHeaders:['Set-Cookie']
   }
 
   

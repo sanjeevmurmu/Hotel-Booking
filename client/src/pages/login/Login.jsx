@@ -25,6 +25,7 @@ const Login = () => {
     try {
       const res = await axios.post("https://lodgeluxeapi.onrender.com/api/auth/login", credentials);
       console.log(res)
+      console.log(res.headers)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/")
     } catch (err) {
